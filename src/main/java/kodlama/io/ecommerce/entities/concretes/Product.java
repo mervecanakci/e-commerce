@@ -1,7 +1,17 @@
 package kodlama.io.ecommerce.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
+import kodlama.io.ecommerce.entities.abstracts.ProductOrder;
+import kodlama.io.ecommerce.entities.abstracts.ProductSeller;
+import kodlama.io.ecommerce.entities.enums.State;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,15 +22,24 @@ import lombok.*;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="product_id")
-    private int productId;
-    @Column(name = "product_name")
-    private String productName;
-    @Column(name = "quantity")
-    private int quantity;
-    @Column(name = "price")
+    private int id;
+    private String name;
+    private int quantity; //miktar
+    @Enumerated(EnumType.STRING)
+    private State state;
     private double price;
-    @Column(name = "description")
+    private double totalPrice;
+    private LocalDateTime dateOfReceipt; // Fatura tarihi
     private String description;
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    private Category category;
+    @JsonIgnore
+    @OneToMany(mappedBy = "product")
+    List<ProductSeller> productSeller;
+    @JsonIgnore
+    @OneToMany(mappedBy = "product")
+    List<ProductOrder> productOrder;
+
 
 }

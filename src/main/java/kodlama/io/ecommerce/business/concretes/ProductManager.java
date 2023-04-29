@@ -68,4 +68,15 @@ public class ProductManager implements ProductService {
             throw new IllegalArgumentException("Descriptions length must be between 10 and 50 character");
     }
 
+
+    /*
+
+    public void setActive(){
+        this.status=Status.IN_STOCK;
+    }
+    public void setNotActive(){
+        this.status=Status.OUT_OF_STOCK;
+    }
+     */
+
 }
