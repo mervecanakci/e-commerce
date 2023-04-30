@@ -1,9 +1,6 @@
 package kodlama.io.ecommerce.entities.concretes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import kodlama.io.ecommerce.entities.abstracts.ProductOrder;
-import kodlama.io.ecommerce.entities.abstracts.ProductSeller;
 import kodlama.io.ecommerce.entities.enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -26,20 +24,29 @@ public class Product {
     private String name;
     private int quantity; //miktar
     @Enumerated(EnumType.STRING)
-    private State state;
+    private State state; //stok durumu -->  IN_STOCK or OUT_OF_STOCK
     private double price;
     private double totalPrice;
     private LocalDateTime dateOfReceipt; // Fatura tarihi
     private String description;
+
     @ManyToOne
-    @JoinColumn(name="category_id")
+    @JoinColumn(name = "category_id")
     private Category category;
-    @JsonIgnore
-    @OneToMany(mappedBy = "product")
-    List<ProductSeller> productSeller;
-    @JsonIgnore
+    @ManyToMany(mappedBy = "products")
+    private List<Order> orders = new ArrayList<>();
+    @ManyToMany(mappedBy = "products")
+    private List<Customer> customers = new ArrayList<>();
+
+  /*  @ManyToMany(mappedBy = "products")
+    private List<Seller> sellers = new ArrayList<>();*/
+
+  /*  @JsonIgnore
     @OneToMany(mappedBy = "product")
     List<ProductOrder> productOrder;
-
-
+      @JsonIgnore
+    @OneToMany(mappedBy = "product")
+    List<ProductSeller> productSeller;
+*/
 }
+//TODO: TAMAMLNADI PRODUCT

@@ -1,4 +1,4 @@
-package kodlama.io.ecommerce.entities.persons;
+package kodlama.io.ecommerce.core.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,9 +14,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String firstName;
-    private String lastName;
     private String email; //
-    // @Email, @NotBlank bunları koy ileride
+    // TODO: @Email, @NotBlank bunları koy ileride
     private String password;//
 }

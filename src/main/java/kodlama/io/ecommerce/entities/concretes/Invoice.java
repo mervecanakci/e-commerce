@@ -19,17 +19,18 @@ public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String cardHolder;
-    private String brandName;
-    private String productName;
-    private int productQuantity;
-    private double productPrice;
-    private double totalPrice;
-    private LocalDateTime dateOfReceipt;
+    private String cardHolder; // kart sahibi
+    private String productName; //ürün adı
+    private String sellerName; // satıcı adı
+    private int productQuantity; //ürün miktarı
+    private double productPrice; //ürün fiyatı
+    private double totalPrice; //toplam fiyat
+    private LocalDateTime dateOfReceipt; //fatura tarihi
     @Enumerated(EnumType.STRING)
-    private InvoiceType invoiceType;
+    private InvoiceType invoiceType; //fatura türü -->  INDIVIDUAL or CORPORATE
 
     @OneToOne
     @JoinColumn(name = "order_id")
     private Order order;
 }
+//TODO: TAMAMLNADI INVOICE

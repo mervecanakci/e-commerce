@@ -24,3 +24,4 @@ public class Category {
     //Set koleksiyonu, her bir öğenin eşsiz olmasını sağlar ve bunu
     //sağlamak istediğiniz durumlarda kullanmak daha uygun olabilir.
 }
+//TODO: TAMAMLNADI CATEGORY

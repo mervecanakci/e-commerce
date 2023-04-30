@@ -1,13 +1,12 @@
 package kodlama.io.ecommerce.entities.concretes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import kodlama.io.ecommerce.entities.abstracts.ProductOrder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,13 +19,22 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    private Invoice invoice;
+    @ManyToMany
+    @JoinTable(
+            name = "product_order",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private List<Product> products = new ArrayList<>();
 
-    @JsonIgnore
+    /*
+      @JsonIgnore
     @OneToMany(mappedBy = "order")
     List<ProductOrder> productOrder;
-    @OneToOne(mappedBy = "order",cascade = CascadeType.ALL)
-    private Invoice invoice;
+     */
 
     //cascade; order sınıfında bir değişiklik yapıldığında bu
     // değişikliğin invoice sınıfındaki ilgili alanlara da yansıtılmasını sağlar.
 }
+//TODO: USER BAĞLANTISI YOK-TAMAMLNADI ORDER
