@@ -1,10 +1,10 @@
 package kodlama.io.ecommerce.business.concretes;
 
 import kodlama.io.ecommerce.business.abstracts.VerificationCodeService;
-import kodlama.io.ecommerce.business.dto.pesponses.create.CreateVerificationCodeResponse;
-import kodlama.io.ecommerce.business.dto.pesponses.get.GetVerificationCodeResponse;
-import kodlama.io.ecommerce.business.dto.pesponses.get.all.GetAllVerificationCodesResponse;
-import kodlama.io.ecommerce.business.dto.pesponses.update.UpdateVerificationCodeResponse;
+import kodlama.io.ecommerce.business.dto.responses.create.CreateVerificationCodeResponse;
+import kodlama.io.ecommerce.business.dto.responses.get.GetVerificationCodeResponse;
+import kodlama.io.ecommerce.business.dto.responses.get.all.GetAllVerificationCodesResponse;
+import kodlama.io.ecommerce.business.dto.responses.update.UpdateVerificationCodeResponse;
 import kodlama.io.ecommerce.business.dto.requests.create.CreateVerificationCodeRequest;
 import kodlama.io.ecommerce.business.dto.requests.update.UpdateVerificationCodeRequest;
 import kodlama.io.ecommerce.business.rules.VerificationCodeBusinessRules;
