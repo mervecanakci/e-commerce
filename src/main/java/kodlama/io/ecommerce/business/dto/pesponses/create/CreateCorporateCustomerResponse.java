@@ -9,5 +9,10 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateLoginResponse {
+public class CreateCorporateCustomerResponse {
+    private int id;
+    private String name;
+    private String taxNumber;
+    private double point;
 }
+

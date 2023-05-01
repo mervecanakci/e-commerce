@@ -10,4 +10,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateOrderResponse {
+    private int id;
+   // private Invoice invoice;
+    //TODO MANY TO MANY LER EKLENİR Mİ BURAYA
+
+
 }

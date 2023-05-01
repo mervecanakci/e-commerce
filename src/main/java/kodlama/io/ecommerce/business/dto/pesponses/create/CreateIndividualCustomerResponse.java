@@ -9,6 +9,10 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateSellerResponse {
+public class CreateIndividualCustomerResponse {
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String identityNumber;
+    private int birthYear;
 }
-
