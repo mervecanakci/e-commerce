@@ -17,7 +17,7 @@ public class GetInvoiceResponse {
     private int orderId;
     private String cardHolder; // kart sahibi
     private String productName; //ürün adı
-    private String sellerName; // satıcı adı
+    private String corporateCustomerName; // satıcı adı
     private int productQuantity; //ürün miktarı
     private double productPrice; //ürün fiyatı
     private double totalPrice; //toplam fiyat

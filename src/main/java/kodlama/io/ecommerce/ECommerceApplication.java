@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 
 @EnableCaching
-@SpringBootApplication
+@SpringBootApplication  //Configuration
 public class ECommerceApplication {
 
 	public static void main(String[] args) {

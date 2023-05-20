@@ -13,6 +13,9 @@ public class CreateOrderResponse {
     private int id;
    // private Invoice invoice;
     //TODO MANY TO MANY LER EKLENİR Mİ BURAYA
+ //   private int productOrder;
+    // *** BİLMİYORUM
+    //TODO BAK BUNA
 
 
 }

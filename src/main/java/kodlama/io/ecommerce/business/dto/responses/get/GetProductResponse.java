@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Setter
 @Getter
 @NoArgsConstructor
@@ -19,7 +17,8 @@ public class GetProductResponse {
     private int quantity; //miktar
     private double price;
     private double totalPrice;
-    private LocalDateTime dateOfReceipt; // Fatura tarihi
     private String description;
     private State state; //stok durumu -->  IN_STOCK or OUT_OF_STOCK
+
+    //TODO ORDER CUSTOMER YAZILACAK MI
 }

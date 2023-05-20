@@ -10,4 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetAllUsersResponse {
+    private int id;
+    private String email;
+    private String password;
 }

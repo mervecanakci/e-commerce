@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class OrderBusinessRules {
+public class IndividualCustomerBusinessRules {
 }

@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +26,6 @@ public class Product {
     private State state; //stok durumu -->  IN_STOCK or OUT_OF_STOCK
     private double price;
     private double totalPrice;
-    private LocalDateTime dateOfReceipt; // Fatura tarihi
     private String description;
 
     @ManyToOne

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateCustomerResponse {
+public class CreateCustomersResponse {
     private int id;
     private LocalDateTime dateRegistered;
 }

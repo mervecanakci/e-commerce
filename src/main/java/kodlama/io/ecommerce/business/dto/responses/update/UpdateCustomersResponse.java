@@ -1,4 +1,4 @@
-package kodlama.io.ecommerce.business.dto.responses.get;
+package kodlama.io.ecommerce.business.dto.responses.update;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetCustomerResponse {
+public class UpdateCustomersResponse {
     private int id;
     private LocalDateTime dateRegistered;
 }
