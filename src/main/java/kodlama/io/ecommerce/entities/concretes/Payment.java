@@ -22,7 +22,6 @@ public class Payment {
     private int cardExpirationMonth;
     private String cardCvv;
     private double balance; //bakiye
-    //TODO: invoice bağlantı yapmadın
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;

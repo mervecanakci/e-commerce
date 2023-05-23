@@ -24,5 +24,5 @@ public interface ProductService {
 
     void changeState(int productId, State state);
 }
-
+//todo servis kısmı tamam
 

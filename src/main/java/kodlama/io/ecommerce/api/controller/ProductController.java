@@ -1,6 +1,12 @@
 package kodlama.io.ecommerce.api.controller;
 
 import kodlama.io.ecommerce.business.abstracts.ProductService;
+import kodlama.io.ecommerce.business.dto.requests.create.CreateProductRequest;
+import kodlama.io.ecommerce.business.dto.requests.update.UpdateProductRequest;
+import kodlama.io.ecommerce.business.dto.responses.create.CreateProductResponse;
+import kodlama.io.ecommerce.business.dto.responses.get.GetProductResponse;
+import kodlama.io.ecommerce.business.dto.responses.get.all.GetAllProductsResponse;
+import kodlama.io.ecommerce.business.dto.responses.update.UpdateProductResponse;
 import kodlama.io.ecommerce.entities.concretes.Product;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,25 +21,25 @@ public class ProductController {
     private final ProductService service;
 
     @GetMapping
-    public List<Product> getAll() {
-        return service.getAll();
+    public List<GetAllProductsResponse> getAll(@RequestParam(defaultValue = "true") boolean includeOutOfStock) {
+        return service.getAll(includeOutOfStock);
     }
 
     @GetMapping("/{id}")
     //@RequestParam kullanmadık
-    public Product getById(@PathVariable int id) {
+    public GetProductResponse getById(@PathVariable int id) {
         return service.getById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Product add(@RequestBody Product product) {
-        return service.add(product);
+    public CreateProductResponse add(@RequestBody CreateProductRequest request) {
+        return service.add(request);
     }
 
     @PutMapping("/{id}")
-    public Product update(@PathVariable int id, @RequestBody Product product) {
-        return service.update(id, product);
+    public UpdateProductResponse update(@PathVariable int id, @RequestBody UpdateProductRequest request) {
+        return service.update(id, request);
     }
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

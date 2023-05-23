@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import kodlama.io.ecommerce.common.constants.Messages;
 import kodlama.io.ecommerce.common.constants.Regex;
+import kodlama.io.ecommerce.entities.concretes.Customer;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,14 +18,7 @@ import org.hibernate.validator.constraints.Length;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateIndividualCustomerRequest {
-    @NotBlank
-    @Pattern(regexp = Regex.EmailRegex, message = Messages.User.EmailNotValid)
-    private String email;
-
-    @NotBlank
-    @Length(min = 8, message = "Length must be greater than 8")
-    private String password;
-
+    private Customer customer;
     @NotNull
     @Pattern(regexp = Regex.NameRegex, message = Messages.IndividualCustomer.FirstNameNotValid)
     private String firstName;

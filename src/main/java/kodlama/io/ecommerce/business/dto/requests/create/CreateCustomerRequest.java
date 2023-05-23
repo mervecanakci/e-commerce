@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Pattern;
 import kodlama.io.ecommerce.business.dto.requests.PaymentRequest;
 import kodlama.io.ecommerce.common.constants.Messages;
 import kodlama.io.ecommerce.common.constants.Regex;
+import kodlama.io.ecommerce.core.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,12 +19,13 @@ import org.hibernate.validator.constraints.Length;
 @AllArgsConstructor
 public class CreateCustomerRequest {
     //todo: emin değilim user id mi olmalıydı bu mu
-    @NotBlank
-    @Pattern(regexp = Regex.EmailRegex, message = Messages.User.EmailNotValid)
-    private String email;
-    @NotBlank
-    @Length(min = 8, message = "Length must be greater than 8")
-    private String password;
+//    @NotBlank
+//    @Pattern(regexp = Regex.EmailRegex, message = Messages.User.EmailNotValid)
+//    private String email;
+//    @NotBlank
+//    @Length(min = 8, message = "Length must be greater than 8")
+//    private String password;
+    private User user;
     private PaymentRequest paymentRequest; // kart bilgileri
 
 //todo tamam

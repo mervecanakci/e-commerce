@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetAllCorporateCustomerResponse {
+public class GetAllCorporateCustomersResponse {
     private int id;
     private String name;
     private String taxNumber;

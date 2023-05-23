@@ -5,7 +5,7 @@ import kodlama.io.ecommerce.business.dto.requests.update.UpdateIndividualCustome
 import kodlama.io.ecommerce.business.dto.responses.create.CreateIndividualCustomerResponse;
 import kodlama.io.ecommerce.business.dto.responses.get.GetIndividualCustomerResponse;
 import kodlama.io.ecommerce.business.dto.responses.get.all.GetAllIndividualCustomersResponse;
-import kodlama.io.ecommerce.business.dto.responses.update.UpdateIndividualCustomersResponse;
+import kodlama.io.ecommerce.business.dto.responses.update.UpdateIndividualCustomerResponse;
 
 import java.util.List;
 
@@ -16,7 +16,8 @@ public interface IndividualCustomerService {
 
     CreateIndividualCustomerResponse add(CreateIndividualCustomerRequest request);
 
-    UpdateIndividualCustomersResponse update(int id, UpdateIndividualCustomerRequest request);
+    UpdateIndividualCustomerResponse update(int id, UpdateIndividualCustomerRequest request);
 
     void delete(int id);
 }
+//todo servis kısmı tamam

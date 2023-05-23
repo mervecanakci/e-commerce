@@ -27,7 +27,9 @@ public class Order {
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> products = new ArrayList<>();
-
+    @ManyToOne
+    @JoinColumn(name = "individualCustomerId")
+    private IndividualCustomer individualCustomer;
     /*
       @JsonIgnore
     @OneToMany(mappedBy = "order")
@@ -37,4 +39,4 @@ public class Order {
     //cascade; order sınıfında bir değişiklik yapıldığında bu
     // değişikliğin invoice sınıfındaki ilgili alanlara da yansıtılmasını sağlar.
 }
-//TODO: USER BAĞLANTISI YOK-TAMAMLNADI ORDER
+//TODO: TAMAMLNADI ORDER

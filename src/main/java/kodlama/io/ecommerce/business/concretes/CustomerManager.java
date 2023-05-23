@@ -36,7 +36,7 @@ public class CustomerManager implements CustomerService {
 
     @Override
     public GetCustomersResponse getById(int id) {
-        // rules.checkIfcustomerExistsById(id);
+         rules.checkIfCustomerExistsById(id);
         Customer customer = repository.findById(id).orElseThrow();
         GetCustomersResponse response = mapper.map(customer, GetCustomersResponse.class);
 
@@ -46,7 +46,7 @@ public class CustomerManager implements CustomerService {
     @Override
     @CacheEvict(value = "customer_list", allEntries = true)
     public CreateCustomersResponse add(CreateCustomerRequest request) {
-        //  rules.checkIfBrandExistsByName(request.getName());
+        //rules.checkIfCustomerExistsByName(request.getName());
         Customer customer = mapper.map(request, Customer.class);
         customer.setId(0);
         repository.save(customer);
@@ -58,7 +58,7 @@ public class CustomerManager implements CustomerService {
     @Override
     @CacheEvict(value = "customer_list", allEntries = true)
     public UpdateCustomersResponse update(int id, UpdateCustomerRequest request) {
-        //  rules.checkIfBrandExistsById(id);
+        rules.checkIfCustomerExistsById(id);
         Customer customer= mapper.map(request,Customer.class);
         customer.setId(id);
         repository.save(customer);
@@ -70,7 +70,7 @@ public class CustomerManager implements CustomerService {
     @Override
     @CacheEvict(value = "customer_list", allEntries = true)
     public void delete(int id) {
-        // rules.checkIfBrandExistsById(id);
+        rules.checkIfCustomerExistsById(id);
         repository.deleteById(id);
     }
 

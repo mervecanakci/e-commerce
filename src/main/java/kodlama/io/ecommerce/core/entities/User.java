@@ -14,7 +14,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String email; //
-    // TODO: @Email, @NotBlank bunları koy ileride
-    private String password;//
+    private String email;
+    private String password;
 }

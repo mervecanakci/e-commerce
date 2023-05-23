@@ -39,7 +39,7 @@ public class PaymentManager implements PaymentService {
 
     @Override
     public GetPaymentResponse getById(int id) {
-       // rules.checkIfPaymentExists(id);
+        rules.checkIfPaymentExists(id);
         Payment payment = repository.findById(id).orElseThrow();
         GetPaymentResponse response = mapper.map(payment, GetPaymentResponse.class);
 
@@ -48,7 +48,7 @@ public class PaymentManager implements PaymentService {
 
     @Override
     public CreatePaymentResponse add(CreatePaymentRequest request) {
-      //  rules.checkIfCardExists(request);
+        rules.checkIfCardExists(request.getCardNumber());
         Payment payment = mapper.map(request, Payment.class);
         payment.setId(0);
         repository.save(payment);
@@ -59,7 +59,7 @@ public class PaymentManager implements PaymentService {
 
     @Override
     public UpdatePaymentResponse update(int id, UpdatePaymentRequest request) {
-        //rules.checkIfPaymentExists(id);
+        rules.checkIfPaymentExists(id);
         Payment payment = mapper.map(request, Payment.class);
         payment.setId(id);
         repository.save(payment);
@@ -70,22 +70,18 @@ public class PaymentManager implements PaymentService {
 
     @Override
     public void delete(int id) {
-      //  rules.checkIfPaymentExists(id);
+      rules.checkIfPaymentExists(id);
         repository.deleteById(id);
     }
 //todo burası alt aynı
     @Override
     public void processProductPayment(CreateProductPaymentRequest request) {
-
-    }
-
- /*   @Override
-    public void processRentalPayment(CreateProductPaymentRequest request) {
         rules.checkIfPaymentIsValid(request);
         Payment payment = repository.findByCardNumber(request.getCardNumber());
         rules.checkIfBalanceIsEnough(request.getPrice(), payment.getBalance());
         posService.pay(); // fake pos service
         payment.setBalance(payment.getBalance() - request.getPrice());
         repository.save(payment);
-    }*/
+    }
+
 }//todo son kısmı yaz rules de

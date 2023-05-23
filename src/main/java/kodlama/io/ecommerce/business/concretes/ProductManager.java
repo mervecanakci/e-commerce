@@ -28,13 +28,12 @@ import java.util.List;
 @AllArgsConstructor
 
 public class ProductManager implements ProductService {
-private final PaymentService paymentService;
+    private final PaymentService paymentService;
     private final InvoiceService invoiceService;
     private final ProductBusinessRules rules;
     private final ModelMapper mapper;
     private final ProductRepository repository;
-private final CorporateCustomerService corporateCustomerService;
-private final GetCorporateCustomerResponse corporateCustomerResponse;
+    private final CorporateCustomerService corporateCustomerService;
 
     @Override
     public List<GetAllProductsResponse> getAll(boolean includeOutOfStock) {
@@ -52,7 +51,6 @@ private final GetCorporateCustomerResponse corporateCustomerResponse;
     }
 
 
-
     @Override
     public GetProductResponse getById(int id) {
         rules.checkIfProductExists(id);
@@ -66,18 +64,20 @@ private final GetCorporateCustomerResponse corporateCustomerResponse;
     public CreateProductResponse add(CreateProductRequest request) {
         rules.checkIfProductIsInStock(request.getState());
         Product product = mapper.map(request, Product.class); //requestten geleni mapledik
-        rules.validateProduct(product);
-        // rules.checkIfProductExistsByName(request.getName());
+        //? rules.validateProduct(product);
+        //? rules.checkIfProductExistsByName(request.getName());
         product.setId(0); //yeni bir tane oluştur create anlamında date base i 1 den başlat
         //dto kaynaklı bu gerekli diğer id ile karıştırabilir
+        product.setState(State.IN_STOCK);
 
+        //create payment
         CreateProductPaymentRequest paymentRequest = new CreateProductPaymentRequest();
-        mapper.map(request.getPaymentRequest(),paymentRequest);
+        mapper.map(request.getPaymentRequest(), paymentRequest);
         paymentRequest.setPrice(getTotalPrice(product));
         paymentService.processProductPayment(paymentRequest);
 
         repository.save(product);
-        changeState(request.getId(), State.IN_STOCK);
+
         CreateProductResponse response = mapper.map(product, CreateProductResponse.class);
 
         // Create Invoice
@@ -96,7 +96,7 @@ private final GetCorporateCustomerResponse corporateCustomerResponse;
 
         product.setId(id);
         product.setTotalPrice(getTotalPrice(product));
-
+        changeState(id, State.IN_STOCK);
         repository.save(product);
         UpdateProductResponse response = mapper.map(product, UpdateProductResponse.class);
 
@@ -106,7 +106,7 @@ private final GetCorporateCustomerResponse corporateCustomerResponse;
     @Override
     public void delete(int id) {
         rules.checkIfProductExists(id);
-        int productId=repository.findById(id).get().getId();
+        int productId = repository.findById(id).get().getId();
         changeState(productId, State.OUT_OF_STOCK);
         repository.deleteById(id);
     }
@@ -127,6 +127,7 @@ private final GetCorporateCustomerResponse corporateCustomerResponse;
         // false ise stokta olmayanı çıkarıp diğerlerini getiricek
         return repository.findAllByStateIsNot(State.OUT_OF_STOCK);
     }
+
     private double getTotalPrice(Product product) {
         return product.getPrice() * product.getQuantity();
     }

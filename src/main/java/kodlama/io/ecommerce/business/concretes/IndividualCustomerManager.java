@@ -6,7 +6,7 @@ import kodlama.io.ecommerce.business.dto.requests.update.UpdateIndividualCustome
 import kodlama.io.ecommerce.business.dto.responses.create.CreateIndividualCustomerResponse;
 import kodlama.io.ecommerce.business.dto.responses.get.GetIndividualCustomerResponse;
 import kodlama.io.ecommerce.business.dto.responses.get.all.GetAllIndividualCustomersResponse;
-import kodlama.io.ecommerce.business.dto.responses.update.UpdateIndividualCustomersResponse;
+import kodlama.io.ecommerce.business.dto.responses.update.UpdateIndividualCustomerResponse;
 import kodlama.io.ecommerce.business.rules.IndividualCustomerBusinessRules;
 import kodlama.io.ecommerce.entities.concretes.IndividualCustomer;
 import kodlama.io.ecommerce.repository.IndividualCustomerRepository;
@@ -36,7 +36,7 @@ public class IndividualCustomerManager implements IndividualCustomerService { //
 
     @Override
     public GetIndividualCustomerResponse getById(int id) {
-        // rules.checkIfIndividualCustomerExistsById(id);
+        rules.checkIfIndividualCustomerExistsById(id);
         IndividualCustomer individualCustomer = repository.findById(id).orElseThrow();
         GetIndividualCustomerResponse response = mapper.map(individualCustomer, GetIndividualCustomerResponse.class);
 
@@ -46,7 +46,7 @@ public class IndividualCustomerManager implements IndividualCustomerService { //
     @Override
     @CacheEvict(value = "individualCustomer_list", allEntries = true)
     public CreateIndividualCustomerResponse add(CreateIndividualCustomerRequest request) {
-        //  rules.checkIfBrandExistsByName(request.getName());
+      //   rules.checkIfBrandExistsByName(request.getName());
         IndividualCustomer individualCustomer = mapper.map(request, IndividualCustomer.class);
         individualCustomer.setId(0);
         repository.save(individualCustomer);
@@ -57,12 +57,12 @@ public class IndividualCustomerManager implements IndividualCustomerService { //
 
     @Override
     @CacheEvict(value = "individualCustomer_list", allEntries = true)
-    public UpdateIndividualCustomersResponse update(int id, UpdateIndividualCustomerRequest request) {
-        //  rules.checkIfBrandExistsById(id);
+    public UpdateIndividualCustomerResponse update(int id, UpdateIndividualCustomerRequest request) {
+        rules.checkIfIndividualCustomerExistsById(id);
         IndividualCustomer individualCustomer= mapper.map(request, IndividualCustomer.class);
         individualCustomer.setId(id);
         repository.save(individualCustomer);
-        UpdateIndividualCustomersResponse response = mapper.map(individualCustomer, UpdateIndividualCustomersResponse.class);
+        UpdateIndividualCustomerResponse response = mapper.map(individualCustomer, UpdateIndividualCustomerResponse.class);
 
         return response;
     }
@@ -70,7 +70,7 @@ public class IndividualCustomerManager implements IndividualCustomerService { //
     @Override
     @CacheEvict(value = "individualCustomer_list", allEntries = true)
     public void delete(int id) {
-        // rules.checkIfBrandExistsById(id);
+        rules.checkIfIndividualCustomerExistsById(id);
         repository.deleteById(id);
     }
 }

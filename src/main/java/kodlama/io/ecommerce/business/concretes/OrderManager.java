@@ -35,7 +35,7 @@ public class OrderManager implements OrderService {
 
     @Override
     public GetOrderResponse getById(int id) {
-        //  rules.checkIfInvoiceExists(id);
+        rules.checkIfOrderExists(id);
         Order order = repository.findById(id).orElseThrow();
         GetOrderResponse response = mapper.map(order, GetOrderResponse.class);
 
@@ -54,7 +54,7 @@ public class OrderManager implements OrderService {
 
     @Override
     public UpdateOrderResponse update(int id, UpdateOrderRequest request) {
-        //    rules.checkIfInvoiceExists(id);
+        rules.checkIfOrderExists(id);
         Order order = mapper.map(request, Order.class);
         order.setId(id);
         repository.save(order);
@@ -65,7 +65,7 @@ public class OrderManager implements OrderService {
 
     @Override
     public void delete(int id) {
-        //  rules.checkIfInvoiceExists(id);
+        rules.checkIfOrderExists(id);
         repository.deleteById(id);
     }
 }

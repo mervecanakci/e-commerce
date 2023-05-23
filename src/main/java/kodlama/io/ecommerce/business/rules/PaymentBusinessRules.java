@@ -25,8 +25,8 @@ public class PaymentBusinessRules {
         }
     }
 
-    public void checkIfCardExists(CreatePaymentRequest request) {
-        if (repository.existsByCardNumber(request.getCardNumber())) {
+    public void checkIfCardExists(String cardNumber) {
+        if (repository.existsByCardNumber(cardNumber)) {
             throw new BusinessException(Messages.Payment.CardNumberAlreadyExists);
         }
     }

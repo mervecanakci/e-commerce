@@ -30,6 +30,7 @@ public class CreateProductRequest {
     private double price;
     @NotBlank
     private String description;
+    private State state;
     @NotBlank
     private PaymentRequest paymentRequest; // kart bilgileri
 

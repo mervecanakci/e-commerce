@@ -36,7 +36,7 @@ private final CategoryBusinessRules rules;
 
     @Override
     public GetCategoryResponse getById(int id) {
-       // rules.checkIfCategoryExistsById(id);
+       rules.checkIfCategoryExistsById(id);
         Category category = repository.findById(id).orElseThrow();
         GetCategoryResponse response = mapper.map(category, GetCategoryResponse.class);
 
@@ -57,7 +57,7 @@ private final CategoryBusinessRules rules;
     @Override
     @CacheEvict(value = "category_list", allEntries = true)
     public UpdateCategoryResponse update(int id, UpdateCategoryRequest request) {
-      //  rules.checkIfBrandExistsById(id);
+        rules.checkIfCategoryExistsById(id);
          Category category= mapper.map(request, Category.class);
         category.setId(id);
         repository.save(category);
@@ -69,7 +69,7 @@ private final CategoryBusinessRules rules;
     @Override
     @CacheEvict(value = "category_list", allEntries = true)
     public void delete(int id) {
-       // rules.checkIfBrandExistsById(id);
+        rules.checkIfCategoryExistsById(id);
         repository.deleteById(id);
     }
 }

@@ -20,3 +20,4 @@ public interface CustomerService {
 
     void delete(int id);
 }
+//todo servis kısmı tamam
