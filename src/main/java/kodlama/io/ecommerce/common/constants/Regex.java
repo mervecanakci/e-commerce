@@ -1,7 +1,7 @@
 package kodlama.io.ecommerce.common.constants;
 
 public class Regex {
-    public final static String EmailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"; //User
+    public final static String EmailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"; //User
     /*
     büyük küçük harf, rakam, nokta,alt çizgi, artı, eksi ve yüzde işaretlerini içerebilir
     @ işaretinden sonra bir veya daha fazla harf, rakam veya tire içerebilir

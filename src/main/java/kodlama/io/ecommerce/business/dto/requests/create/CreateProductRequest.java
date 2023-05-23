@@ -18,8 +18,7 @@ import lombok.Setter;
 public class CreateProductRequest {
     @NotNull
     private int categoryId;
-    @NotNull
-    private int corporateCustomerId;
+
     @NotNull
     @Size(min = 2)
     private String name;
@@ -31,8 +30,7 @@ public class CreateProductRequest {
     @NotBlank
     private String description;
     private State state;
-    @NotBlank
-    private PaymentRequest paymentRequest; // kart bilgileri
+
 
 //todo tamam
 

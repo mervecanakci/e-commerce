@@ -19,6 +19,7 @@ public class CreateInvoiceRequest {
     @NotBlank
     @NotNull
     private int orderId;
+    private int corporateCustomerId;
     @NotBlank
     private String cardHolder; // kart sahibi
     @NotBlank

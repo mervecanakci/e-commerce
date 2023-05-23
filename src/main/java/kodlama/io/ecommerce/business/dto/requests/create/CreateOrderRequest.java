@@ -2,6 +2,7 @@ package kodlama.io.ecommerce.business.dto.requests.create;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import kodlama.io.ecommerce.business.dto.requests.PaymentRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ public class CreateOrderRequest {
     @NotBlank
     @Min(0)
     private int invoiceId;
-
+    @NotBlank
+    private PaymentRequest paymentRequest; // kart bilgileri
 }
 //todo tamam

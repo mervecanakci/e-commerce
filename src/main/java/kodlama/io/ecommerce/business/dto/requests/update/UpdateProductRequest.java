@@ -18,8 +18,7 @@ import lombok.Setter;
 public class UpdateProductRequest {
     @NotNull
     private int categoryId;
-    @NotNull
-    private int corporateCustomerId;
+
     @NotNull
     @Size(min = 2)
     private String name;
@@ -30,8 +29,7 @@ public class UpdateProductRequest {
     private double price;
     @NotBlank
     private String description;
-    @NotBlank
-    private PaymentRequest paymentRequest; // kart bilgileri
+
     private State state; //stok durumu -->  IN_STOCK or OUT_OF_STOCK
 
 

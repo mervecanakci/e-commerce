@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class GetInvoiceResponse {
     private int id;
+    private int corporateCustomerId;
     private int orderId;
     private String cardHolder; // kart sahibi
     private String productName; //ürün adı
