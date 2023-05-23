@@ -70,20 +70,13 @@ public class ProductManager implements ProductService {
         //dto kaynaklı bu gerekli diğer id ile karıştırabilir
         product.setState(State.IN_STOCK);
 
-        //create payment
-        CreateProductPaymentRequest paymentRequest = new CreateProductPaymentRequest();
-        mapper.map(request.getPaymentRequest(), paymentRequest);
-        paymentRequest.setPrice(getTotalPrice(product));
-        paymentService.processProductPayment(paymentRequest);
+
 
         repository.save(product);
 
         CreateProductResponse response = mapper.map(product, CreateProductResponse.class);
 
-        // Create Invoice
-        CreateInvoiceRequest invoiceRequest = new CreateInvoiceRequest();
-        createInvoiceRequest(request, invoiceRequest, product);
-        invoiceService.add(invoiceRequest);
+
 
         return response;
     }
@@ -143,15 +136,5 @@ public class ProductManager implements ProductService {
         this.status=Status.OUT_OF_STOCK;
     }
      */
-    private void createInvoiceRequest(CreateProductRequest request, CreateInvoiceRequest invoiceRequest, Product product) {
-        GetCorporateCustomerResponse corporateCustomer = corporateCustomerService.getById(request.getCorporateCustomerId());
 
-        invoiceRequest.setCardHolder(request.getPaymentRequest().getCardHolder());
-        invoiceRequest.setProductName(product.getName());
-        invoiceRequest.setCorporateCustomerName(corporateCustomer.getName());
-        invoiceRequest.setProductPrice(product.getPrice());
-        invoiceRequest.setProductQuantity(product.getQuantity());
-        invoiceRequest.setDateOfReceipt(LocalDateTime.now());
-
-    }
 }

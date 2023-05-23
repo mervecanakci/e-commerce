@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 public class CreateInvoiceResponse {
     private int id;
     private int orderId;
+    private int corporateCustomerId;
     private String cardHolder; // kart sahibi
     private String productName; //ürün adı
     private String corporateCustomerName; // satıcı adı
