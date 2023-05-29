@@ -27,6 +27,8 @@ public class CreateProductRequest {
     @NotNull
     @Min(0)
     private double price;
+    @NotNull
+    private boolean isActive;
     @NotBlank
     private String description;
     private State state;

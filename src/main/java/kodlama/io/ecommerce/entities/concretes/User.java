@@ -1,9 +1,12 @@
-package kodlama.io.ecommerce.core.entities;
+package kodlama.io.ecommerce.entities.concretes;
 
 import jakarta.persistence.*;
+import kodlama.io.ecommerce.entities.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -16,4 +19,7 @@ public class User {
     private int id;
     private String email;
     private String password;
+    private Role role;
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
 }

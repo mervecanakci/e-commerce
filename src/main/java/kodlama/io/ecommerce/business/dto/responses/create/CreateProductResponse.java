@@ -18,6 +18,7 @@ public class CreateProductResponse{
     private double price;
     private double totalPrice;
     private String description;
+    private boolean isActive;
     private State state; //stok durumu -->  IN_STOCK or OUT_OF_STOCK
 
    //TODO ORDER CUSTOMER YAZILACAK MI

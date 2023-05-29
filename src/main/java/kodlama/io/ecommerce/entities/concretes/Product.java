@@ -28,13 +28,14 @@ public class Product {
     private double totalPrice;
     private String description;
 
+    private boolean isActive;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
     @ManyToMany(mappedBy = "products")
     private List<Order> orders = new ArrayList<>();
-    @ManyToMany(mappedBy = "products")
-    private List<Customer> customers = new ArrayList<>();
+
 
   /*  @ManyToMany(mappedBy = "products")
     private List<Seller> sellers = new ArrayList<>();*/

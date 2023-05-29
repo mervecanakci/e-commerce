@@ -1,5 +1,8 @@
 package kodlama.io.ecommerce.business.dto.responses.get;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import kodlama.io.ecommerce.business.dto.requests.PaymentRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,5 +14,11 @@ import lombok.Setter;
 @AllArgsConstructor
 public class GetOrderResponse {
     private int id;
-
+    private String name;
+    private double price;
+    @NotNull
+    private int amount; //miktar
+    private double totalPrice;
+    @NotBlank
+    private PaymentRequest paymentRequest; // kart bilgileri
 }

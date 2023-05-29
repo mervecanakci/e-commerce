@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Setter
@@ -19,6 +20,12 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private int productId;
+    private String productName;
+    private double price;
+    private double totalPrice;
+
+    private int amount;
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private Invoice invoice;
     @ManyToMany
@@ -27,16 +34,9 @@ public class Order {
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> products = new ArrayList<>();
-    @ManyToOne
-    @JoinColumn(name = "individualCustomerId")
-    private IndividualCustomer individualCustomer;
-    /*
-      @JsonIgnore
-    @OneToMany(mappedBy = "order")
-    List<ProductOrder> productOrder;
-     */
 
-    //cascade; order sınıfında bir değişiklik yapıldığında bu
-    // değişikliğin invoice sınıfındaki ilgili alanlara da yansıtılmasını sağlar.
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
 //TODO: TAMAMLNADI ORDER

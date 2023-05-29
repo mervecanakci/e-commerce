@@ -1,5 +1,6 @@
 package kodlama.io.ecommerce.business.dto.responses.create;
 
+import kodlama.io.ecommerce.entities.concretes.Product;
 import kodlama.io.ecommerce.entities.enums.InvoiceType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,7 +18,7 @@ public class CreateInvoiceResponse {
     private int orderId;
     private int corporateCustomerId;
     private String cardHolder; // kart sahibi
-    private String productName; //ürün adı
+    private Product product; //ürün adı
     private String corporateCustomerName; // satıcı adı
     private int productQuantity; //ürün miktarı
     private double productPrice; //ürün fiyatı
