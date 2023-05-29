@@ -29,6 +29,8 @@ public class UpdateProductRequest {
     private double price;
     @NotBlank
     private String description;
+    @NotNull
+    private boolean isActive;
 
     private State state; //stok durumu -->  IN_STOCK or OUT_OF_STOCK
 

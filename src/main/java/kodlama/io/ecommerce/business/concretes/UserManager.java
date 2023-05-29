@@ -8,7 +8,7 @@ import kodlama.io.ecommerce.business.dto.responses.get.GetUserResponse;
 import kodlama.io.ecommerce.business.dto.responses.get.all.GetAllUsersResponse;
 import kodlama.io.ecommerce.business.dto.responses.update.UpdateUserResponse;
 import kodlama.io.ecommerce.business.rules.UserBusinessRules;
-import kodlama.io.ecommerce.core.entities.User;
+import kodlama.io.ecommerce.entities.concretes.User;
 import kodlama.io.ecommerce.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;

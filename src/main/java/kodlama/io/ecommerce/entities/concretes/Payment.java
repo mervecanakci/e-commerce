@@ -22,9 +22,6 @@ public class Payment {
     private int cardExpirationMonth;
     private String cardCvv;
     private double balance; //bakiye
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
-    //TODO:- TAMAMLNADI PAYMENT
+
 
 }

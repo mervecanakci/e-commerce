@@ -1,5 +1,6 @@
 package kodlama.io.ecommerce.business.dto.responses.create;
 
+import kodlama.io.ecommerce.entities.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,4 +14,5 @@ public class CreateUserResponse {
     private int id;
     private String email;
     private String password;
+    private Role role;
 }

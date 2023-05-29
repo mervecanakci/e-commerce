@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import kodlama.io.ecommerce.common.constants.Messages;
 import kodlama.io.ecommerce.common.constants.Regex;
+import kodlama.io.ecommerce.entities.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,5 +23,7 @@ public class CreateUserRequest {
     @NotBlank
     @Length(min = 8, message = "Length must be greater than 8")
     private String password;
+
+    private Role role;
 }
 //todo tamam

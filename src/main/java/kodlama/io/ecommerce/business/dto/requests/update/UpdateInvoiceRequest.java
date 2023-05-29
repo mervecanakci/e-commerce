@@ -19,11 +19,8 @@ public class UpdateInvoiceRequest {
     @NotBlank
     @NotNull
     private int orderId;
-    private int corporateCustomerId;
     @NotBlank
     private String cardHolder; // kart sahibi
-    @NotBlank
-    private String productName; //ürün adı
     @NotBlank
     private String corporateCustomerName; // satıcı adı
     @Size(min = 1,max = 10)

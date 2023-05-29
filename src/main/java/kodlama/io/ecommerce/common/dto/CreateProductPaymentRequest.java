@@ -1,15 +1,11 @@
 package kodlama.io.ecommerce.common.dto;
 
+import kodlama.io.ecommerce.business.dto.requests.PaymentRequest;
 import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateProductPaymentRequest {
-    private String cardNumber;
-    private String cardHolder;
-    private int cardExpirationYear;
-    private int cardExpirationMonth;
-    private String cardCvv;
+public class CreateProductPaymentRequest extends PaymentRequest {
     private double price;
 }

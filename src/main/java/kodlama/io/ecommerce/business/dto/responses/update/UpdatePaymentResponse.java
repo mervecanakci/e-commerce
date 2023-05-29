@@ -11,7 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UpdatePaymentResponse {
     private int id;
-    private int customerId;
     private String cardNumber;
     private String cardHolder;
     private int cardExpirationYear;

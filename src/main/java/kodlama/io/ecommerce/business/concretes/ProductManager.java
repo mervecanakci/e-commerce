@@ -1,19 +1,15 @@
 package kodlama.io.ecommerce.business.concretes;
 
-import kodlama.io.ecommerce.business.abstracts.CorporateCustomerService;
 import kodlama.io.ecommerce.business.abstracts.InvoiceService;
 import kodlama.io.ecommerce.business.abstracts.PaymentService;
 import kodlama.io.ecommerce.business.abstracts.ProductService;
-import kodlama.io.ecommerce.business.dto.requests.create.CreateInvoiceRequest;
 import kodlama.io.ecommerce.business.dto.requests.create.CreateProductRequest;
 import kodlama.io.ecommerce.business.dto.requests.update.UpdateProductRequest;
 import kodlama.io.ecommerce.business.dto.responses.create.CreateProductResponse;
-import kodlama.io.ecommerce.business.dto.responses.get.GetCorporateCustomerResponse;
 import kodlama.io.ecommerce.business.dto.responses.get.GetProductResponse;
 import kodlama.io.ecommerce.business.dto.responses.get.all.GetAllProductsResponse;
 import kodlama.io.ecommerce.business.dto.responses.update.UpdateProductResponse;
 import kodlama.io.ecommerce.business.rules.ProductBusinessRules;
-import kodlama.io.ecommerce.common.dto.CreateProductPaymentRequest;
 import kodlama.io.ecommerce.entities.concretes.Product;
 import kodlama.io.ecommerce.entities.enums.State;
 import kodlama.io.ecommerce.repository.ProductRepository;
@@ -21,19 +17,17 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
 
 public class ProductManager implements ProductService {
-    private final PaymentService paymentService;
-    private final InvoiceService invoiceService;
+
     private final ProductBusinessRules rules;
     private final ModelMapper mapper;
     private final ProductRepository repository;
-    private final CorporateCustomerService corporateCustomerService;
+
 
     @Override
     public List<GetAllProductsResponse> getAll(boolean includeOutOfStock) {
@@ -64,6 +58,8 @@ public class ProductManager implements ProductService {
     public CreateProductResponse add(CreateProductRequest request) {
         rules.checkIfProductIsInStock(request.getState());
         Product product = mapper.map(request, Product.class); //requestten geleni mapledik
+
+        product.setActive(true);
         //? rules.validateProduct(product);
         //? rules.checkIfProductExistsByName(request.getName());
         product.setId(0); //yeni bir tane oluştur create anlamında date base i 1 den başlat
